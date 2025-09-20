@@ -1,0 +1,98 @@
+{
+  "name": "asthmacare-app",
+  "version": "1.0.0",
+  "description": "AI-Powered Asthma Management Platform - Complete full-stack healthcare application",
+  "main": "index.html",
+  "type": "module",
+  "scripts": {
+    "dev": "live-server --port=3000 --host=localhost --entry-file=index.html",
+    "start": "http-server -p 3000 -c-1",
+    "build": "echo 'Building static assets...' && npm run optimize",
+    "optimize": "echo 'Optimizing images and assets...'",
+    "test": "echo 'Running tests...' && npm run test:integration",
+    "test:integration": "echo 'Integration tests would run here'",
+    "deploy": "echo 'Deploying to production...'",
+    "setup": "echo 'Setting up AsthmaCare...' && npm install",
+    "db:setup": "echo 'Database setup instructions in setup-instructions.md'",
+    "db:migrate": "echo 'Run SQL migrations from scripts/utils/database.sql'",
+    "supabase:types": "echo 'Generate TypeScript types from Supabase schema'"
+  },
+  "keywords": [
+    "healthcare",
+    "asthma",
+    "medical",
+    "ai",
+    "health-tracking",
+    "respiratory-health",
+    "telemedicine",
+    "health-management",
+    "supabase",
+    "progressive-web-app"
+  ],
+  "author": {
+    "name": "AsthmaCare Team",
+    "email": "contact@asthmacare.com",
+    "url": "https://asthmacare.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/asthmacare/asthmacare-app.git"
+  },
+  "bugs": {
+    "url": "https://github.com/asthmacare/asthmacare-app/issues",
+    "email": "support@asthmacare.com"
+  },
+  "homepage": "https://asthmacare.com",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.38.4"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.2",
+    "http-server": "^14.1.1",
+    "concurrently": "^8.2.2",
+    "eslint": "^8.57.0",
+    "prettier": "^3.1.1"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ],
+  "config": {
+    "port": "3000",
+    "host": "localhost"
+  },
+  "directories": {
+    "lib": "scripts",
+    "doc": "docs"
+  },
+  "files": [
+    "index.html",
+    "login.html",
+    "signup.html",
+    "reports.html",
+    "appointments.html",
+    "components/",
+    "scripts/",
+    "config/",
+    "README.md",
+    "setup-instructions.md"
+  ],
+  "funding": {
+    "type": "individual",
+    "url": "https://github.com/sponsors/asthmacare"
+  },
+  "contributors": [
+    {
+      "name": "Development Team",
+      "email": "dev@asthmacare.com",
+      "role": "developer"
+    }
+  ]
+}

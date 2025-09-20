@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en"><script src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/libs/extend-native-history-api.js"></script><script src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/libs/requests.js"></script><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Appointments - AsthmaCare</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://use.typekit.net/yjp3aho.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    body { font-family: "sofia-pro", sans-serif; }
+    .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+  </style>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.container{width:100%}@media (min-width: 640px){.container{max-width:640px}}@media (min-width: 768px){.container{max-width:768px}}@media (min-width: 1024px){.container{max-width:1024px}}@media (min-width: 1280px){.container{max-width:1280px}}@media (min-width: 1536px){.container{max-width:1536px}}.sticky{position:sticky}.top-8{top:2rem}.mx-auto{margin-left:auto;margin-right:auto}.mb-12{margin-bottom:3rem}.mb-2{margin-bottom:0.5rem}.mb-3{margin-bottom:0.75rem}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.ml-1{margin-left:0.25rem}.ml-2{margin-left:0.5rem}.ml-3{margin-left:0.75rem}.mt-1{margin-top:0.25rem}.mt-6{margin-top:1.5rem}.block{display:block}.inline-block{display:inline-block}.flex{display:flex}.grid{display:grid}.hidden{display:none}.h-16{height:4rem}.h-20{height:5rem}.h-4{height:1rem}.h-5{height:1.25rem}.h-8{height:2rem}.min-h-screen{min-height:100vh}.w-16{width:4rem}.w-20{width:5rem}.w-4{width:1rem}.w-5{width:1.25rem}.w-8{width:2rem}.w-full{width:100%}.max-w-4xl{max-width:56rem}.max-w-6xl{max-width:72rem}.max-w-7xl{max-width:80rem}@keyframes spin{to{transform:rotate(360deg)}}.animate-spin{animation:spin 1s linear infinite}.resize-none{resize:none}.flex-col{flex-direction:column}.items-center{align-items:center}.justify-center{justify-content:center}.gap-1{gap:0.25rem}.gap-4{gap:1rem}.gap-8{gap:2rem}.space-y-2 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.5rem * var(--tw-space-y-reverse))}.space-y-6 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.5rem * var(--tw-space-y-reverse))}.rounded-2xl{border-radius:1rem}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:0.5rem}.rounded-md{border-radius:0.375rem}.border{border-width:1px}.border-b{border-bottom-width:1px}.border-b-2{border-bottom-width:2px}.border-blue-600{--tw-border-opacity:1;border-color:rgb(37 99 235 / var(--tw-border-opacity, 1))}.border-gray-200{--tw-border-opacity:1;border-color:rgb(229 231 235 / var(--tw-border-opacity, 1))}.border-gray-300{--tw-border-opacity:1;border-color:rgb(209 213 219 / var(--tw-border-opacity, 1))}.border-green-200{--tw-border-opacity:1;border-color:rgb(187 247 208 / var(--tw-border-opacity, 1))}.border-red-200{--tw-border-opacity:1;border-color:rgb(254 202 202 / var(--tw-border-opacity, 1))}.bg-gray-50{--tw-bg-opacity:1;background-color:rgb(249 250 251 / var(--tw-bg-opacity, 1))}.bg-blue-600{--tw-bg-opacity:1;background-color:rgb(37 99 235 / var(--tw-bg-opacity, 1))}.bg-gray-100{--tw-bg-opacity:1;background-color:rgb(243 244 246 / var(--tw-bg-opacity, 1))}.bg-green-50{--tw-bg-opacity:1;background-color:rgb(240 253 244 / var(--tw-bg-opacity, 1))}.bg-red-50{--tw-bg-opacity:1;background-color:rgb(254 242 242 / var(--tw-bg-opacity, 1))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.fill-current{fill:currentColor}.object-cover{object-fit:cover}.p-1{padding:0.25rem}.p-4{padding:1rem}.p-6{padding:1.5rem}.p-8{padding:2rem}.px-4{padding-left:1rem;padding-right:1rem}.py-12{padding-top:3rem;padding-bottom:3rem}.py-16{padding-top:4rem;padding-bottom:4rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.pb-16{padding-bottom:4rem}.pt-20{padding-top:5rem}.text-center{text-align:center}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-4xl{font-size:2.25rem;line-height:2.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.font-bold{font-weight:700}.font-medium{font-weight:500}.font-semibold{font-weight:600}.text-blue-600{--tw-text-opacity:1;color:rgb(37 99 235 / var(--tw-text-opacity, 1))}.text-gray-300{--tw-text-opacity:1;color:rgb(209 213 219 / var(--tw-text-opacity, 1))}.text-gray-400{--tw-text-opacity:1;color:rgb(156 163 175 / var(--tw-text-opacity, 1))}.text-gray-500{--tw-text-opacity:1;color:rgb(107 114 128 / var(--tw-text-opacity, 1))}.text-gray-600{--tw-text-opacity:1;color:rgb(75 85 99 / var(--tw-text-opacity, 1))}.text-gray-700{--tw-text-opacity:1;color:rgb(55 65 81 / var(--tw-text-opacity, 1))}.text-gray-800{--tw-text-opacity:1;color:rgb(31 41 55 / var(--tw-text-opacity, 1))}.text-green-400{--tw-text-opacity:1;color:rgb(74 222 128 / var(--tw-text-opacity, 1))}.text-green-700{--tw-text-opacity:1;color:rgb(21 128 61 / var(--tw-text-opacity, 1))}.text-green-800{--tw-text-opacity:1;color:rgb(22 101 52 / var(--tw-text-opacity, 1))}.text-red-400{--tw-text-opacity:1;color:rgb(248 113 113 / var(--tw-text-opacity, 1))}.text-red-700{--tw-text-opacity:1;color:rgb(185 28 28 / var(--tw-text-opacity, 1))}.text-red-800{--tw-text-opacity:1;color:rgb(153 27 27 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.text-yellow-400{--tw-text-opacity:1;color:rgb(250 204 21 / var(--tw-text-opacity, 1))}.opacity-90{opacity:0.9}.shadow-lg{--tw-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-sm{--tw-shadow:0 1px 2px 0 rgb(0 0 0 / 0.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.transition-colors{transition-property:color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.hover\:bg-blue-700:hover{--tw-bg-opacity:1;background-color:rgb(29 78 216 / var(--tw-bg-opacity, 1))}.hover\:text-blue-800:hover{--tw-text-opacity:1;color:rgb(30 64 175 / var(--tw-text-opacity, 1))}.hover\:text-gray-800:hover{--tw-text-opacity:1;color:rgb(31 41 55 / var(--tw-text-opacity, 1))}.focus\:border-transparent:focus{border-color:transparent}.focus\:ring-2:focus{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)}.focus\:ring-blue-500:focus{--tw-ring-opacity:1;--tw-ring-color:rgb(59 130 246 / var(--tw-ring-opacity, 1))}.focus\:ring-offset-2:focus{--tw-ring-offset-width:2px}.disabled\:opacity-50:disabled{opacity:0.5}@media (min-width: 640px){.sm\:flex-row{flex-direction:row}.sm\:items-center{align-items:center}.sm\:justify-between{justify-content:space-between}}@media (min-width: 768px){.md\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}}@media (min-width: 1024px){.lg\:col-span-1{grid-column:span 1 / span 1}.lg\:col-span-2{grid-column:span 2 / span 2}.lg\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.lg\:text-4xl{font-size:2.25rem;line-height:2.5rem}.lg\:text-5xl{font-size:3rem;line-height:1}}</style><link type="text/css" rel="stylesheet" id="dark-mode-custom-link"><link type="text/css" rel="stylesheet" id="dark-mode-general-link"><style lang="en" type="text/css" id="dark-mode-custom-style"></style><style lang="en" type="text/css" id="dark-mode-native-style"></style><style lang="en" type="text/css" id="dark-mode-native-sheet"></style><script bis_use="true" type="text/javascript" charset="utf-8" data-bis-config="["facebook.com/","twitter.com/","youtube-nocookie.com/embed/","//vk.com/","//www.vk.com/","linkedin.com/","//www.linkedin.com/","//instagram.com/","//www.instagram.com/","//www.google.com/recaptcha/api2/","//hangouts.google.com/webchat/","//www.google.com/calendar/","//www.google.com/maps/embed","spotify.com/","soundcloud.com/","//player.vimeo.com/","//disqus.com/","//tgwidget.com/","//js.driftt.com/","friends2follow.com","/widget","login","//video.bigmir.net/","blogger.com","//smartlock.google.com/","//keep.google.com/","/web.tolstoycomments.com/","moz-extension://","chrome-extension://","/auth/","//analytics.google.com/","adclarity.com","paddle.com/checkout","hcaptcha.com","recaptcha.net","2captcha.com","accounts.google.com","www.google.com/shopping/customerreviews","buy.tinypass.com","gstatic.com","secureir.ebaystatic.com","docs.google.com","contacts.google.com","github.com","mail.google.com","chat.google.com","audio.xpleer.com","keepa.com","static.xx.fbcdn.net","sas.selleramp.com","1plus1.video","console.googletagservices.com","//lnkd.demdex.net/","//radar.cedexis.com/","//li.protechts.net/","challenges.cloudflare.com/","ogs.google.com"]" src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/executors/traffic.js"></script></head>
+<body class="bg-gray-50 min-h-screen" __processed_983e305a-a3d7-456e-841f-264886feb821__="true" bis_status="ok" bis_frame_id="1476">
+  <!-- Navigation -->
+  <div id="navbar-container" data-source="components/navbar.html"></div>
+
+  <!-- Header Section -->
+  <section class="gradient-bg text-white pt-20 pb-16" data-id="header-section">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-4xl lg:text-5xl font-bold mb-6" data-id="page-title">
+          Doctor Appointments
+        </h1>
+        <p class="text-xl opacity-90" data-id="page-subtitle">
+          Schedule appointments with respiratory specialists and manage your healthcare calendar
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section class="py-16" data-id="main-content">
+    <div class="container mx-auto px-4">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid lg:grid-cols-3 gap-8">
+          
+          <!-- Appointment Booking Form -->
+          <div class="lg:col-span-1">
+            <div class="bg-white rounded-2xl shadow-lg p-8 sticky top-8" data-id="booking-form">
+              <h2 class="text-2xl font-bold text-gray-800 mb-6" data-id="booking-title">
+                Book New Appointment
+              </h2>
+              
+              <form id="appointment-form" class="space-y-6" data-id="appointment-form">
+                <!-- Doctor Selection -->
+                <div>
+                  <label for="doctor-select" class="block text-sm font-medium text-gray-700 mb-2">Select Doctor</label>
+                  <select id="doctor-select" required="" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" data-id="doctor-select">
+                    <option value="">Choose a doctor</option>
+                    <option value="dr-smith">Dr. Sarah Smith - Pulmonologist</option>
+                    <option value="dr-johnson">Dr. Michael Johnson - Respiratory Specialist</option>
+                    <option value="dr-williams">Dr. Emily Williams - Allergy & Asthma</option>
+                    <option value="dr-brown">Dr. David Brown - Internal Medicine</option>
+                    <option value="dr-davis">Dr. Lisa Davis - Pediatric Pulmonology</option>
+                  </select>
+                </div>
+
+                <!-- Appointment Type -->
+                <div>
+                  <label for="appointment-type" class="block text-sm font-medium text-gray-700 mb-2">Appointment Type</label>
+                  <select id="appointment-type" required="" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" data-id="appointment-type">
+                    <option value="">Select type</option>
+                    <option value="consultation">General Consultation</option>
+                    <option value="follow-up">Follow-up Visit</option>
+                    <option value="emergency">Emergency Consultation</option>
+                    <option value="routine-checkup">Routine Checkup</option>
+                    <option value="test-results">Test Results Review</option>
+                    <option value="prescription">Prescription Renewal</option>
+                  </select>
+                </div>
+
+                <!-- Date Selection -->
+                <div>
+                  <label for="appointment-date" class="block text-sm font-medium text-gray-700 mb-2">Preferred Date</label>
+                  <input type="date" id="appointment-date" required="" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" data-id="appointment-date">
+                </div>
+
+                <!-- Time Selection -->
+                <div>
+                  <label for="appointment-time" class="block text-sm font-medium text-gray-700 mb-2">Preferred Time</label>
+                  <select id="appointment-time" required="" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" data-id="appointment-time">
+                    <option value="">Select time</option>
+                    <option value="09:00">9:00 AM</option>
+                    <option value="09:30">9:30 AM</option>
+                    <option value="10:00">10:00 AM</option>
+                    <option value="10:30">10:30 AM</option>
+                    <option value="11:00">11:00 AM</option>
+                    <option value="11:30">11:30 AM</option>
+                    <option value="14:00">2:00 PM</option>
+                    <option value="14:30">2:30 PM</option>
+                    <option value="15:00">3:00 PM</option>
+                    <option value="15:30">3:30 PM</option>
+                    <option value="16:00">4:00 PM</option>
+                    <option value="16:30">4:30 PM</option>
+                  </select>
+                </div>
+
+                <!-- Reason for Visit -->
+                <div>
+                  <label for="visit-reason" class="block text-sm font-medium text-gray-700 mb-2">Reason for Visit</label>
+                  <textarea id="visit-reason" rows="4" required="" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none" placeholder="Please describe your symptoms or reason for the appointment..." data-id="visit-reason"></textarea>
+                </div>
+
+                <!-- Priority Level -->
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-3">Priority Level</label>
+                  <div class="space-y-2">
+                    <label class="flex items-center">
+                      <input type="radio" name="priority" value="routine" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300" checked="" data-id="priority-routine">
+                      <span class="ml-2 text-sm text-gray-600">Routine (within 2 weeks)</span>
+                    </label>
+                    <label class="flex items-center">
+                      <input type="radio" name="priority" value="urgent" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300" data-id="priority-urgent">
+                      <span class="ml-2 text-sm text-gray-600">Urgent (within 3 days)</span>
+                    </label>
+                    <label class="flex items-center">
+                      <input type="radio" name="priority" value="emergency" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300" data-id="priority-emergency">
+                      <span class="ml-2 text-sm text-gray-600">Emergency (within 24 hours)</span>
+                    </label>
+                  </div>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" id="book-appointment-btn" class="w-full bg-blue-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors disabled:opacity-50" data-id="book-appointment-btn">
+                  <span id="book-btn-text">Book Appointment</span>
+                  <div id="book-spinner" class="hidden">
+                    <i data-lucide="loader-2" class="w-5 h-5 animate-spin mx-auto"></i>
+                  </div>
+                </button>
+              </form>
+
+              <!-- Success Message -->
+              <div id="success-message" class="hidden mt-6 bg-green-50 border border-green-200 rounded-lg p-4" data-id="success-message">
+                <div class="flex">
+                  <i data-lucide="check-circle" class="w-5 h-5 text-green-400"></i>
+                  <div class="ml-3">
+                    <h3 class="text-sm font-medium text-green-800">Appointment Booked!</h3>
+                    <p class="text-sm text-green-700 mt-1">We'll send you a confirmation email shortly.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Error Message -->
+              <div id="error-message" class="hidden mt-6 bg-red-50 border border-red-200 rounded-lg p-4" data-id="error-message">
+                <div class="flex">
+                  <i data-lucide="alert-circle" class="w-5 h-5 text-red-400"></i>
+                  <div class="ml-3">
+                    <h3 class="text-sm font-medium text-red-800">Booking Failed</h3>
+                    <p id="error-text" class="text-sm text-red-700 mt-1">Please try again.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Appointments List -->
+          <div class="lg:col-span-2">
+            <div class="bg-white rounded-2xl shadow-lg" data-id="appointments-section">
+              <!-- Header -->
+              <div class="p-8 border-b border-gray-200" data-id="appointments-header">
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                  <h2 class="text-2xl font-bold text-gray-800">Your Appointments</h2>
+                  
+                  <!-- Filter Tabs -->
+                  <div class="flex rounded-lg bg-gray-100 p-1">
+                    <button id="tab-upcoming" class="px-4 py-2 rounded-md text-sm font-medium transition-colors bg-white text-blue-600 shadow-sm" data-id="tab-upcoming">
+                      Upcoming
+                    </button>
+                    <button id="tab-past" class="px-4 py-2 rounded-md text-sm font-medium transition-colors text-gray-600 hover:text-gray-800" data-id="tab-past">
+                      Past
+                    </button>
+                    <button id="tab-all" class="px-4 py-2 rounded-md text-sm font-medium transition-colors text-gray-600 hover:text-gray-800" data-id="tab-all">
+                      All
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Appointments List -->
+              <div class="p-8" data-id="appointments-list">
+                <div id="appointments-container" class="space-y-6" data-id="appointments-container">
+                  <!-- Appointments will be loaded here -->
+                  <div class="text-center py-12" id="empty-appointments" data-id="empty-appointments">
+                    <i data-lucide="calendar" class="w-16 h-16 text-gray-300 mx-auto mb-4"></i>
+                    <p class="text-gray-500 text-lg font-medium mb-2">No appointments scheduled</p>
+                    <p class="text-gray-400">Book your first appointment to get started</p>
+                  </div>
+                </div>
+
+                <!-- Loading State -->
+                <div id="loading-appointments" class="hidden text-center py-12" data-id="loading-appointments">
+                  <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mb-4"></div>
+                  <p class="text-gray-500">Loading your appointments...</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Doctor Profiles Section -->
+  <section class="py-16 bg-white" data-id="doctors-section">
+    <div class="container mx-auto px-4">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-4" data-id="doctors-title">
+            Our Respiratory Specialists
+          </h2>
+          <p class="text-xl text-gray-600" data-id="doctors-subtitle">
+            Expert care from certified pulmonologists and respiratory specialists
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Doctor Cards -->
+          <div class="bg-gray-50 rounded-2xl p-6 text-center" data-id="doctor-card-1">
+            <div class="mb-4">
+              <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Dr. Sarah Smith" class="w-20 h-20 rounded-full mx-auto object-cover">
+            </div>
+            <h3 class="text-xl font-semibold text-gray-800 mb-2">Dr. Sarah Smith</h3>
+            <p class="text-blue-600 font-medium mb-3">Pulmonologist</p>
+            <p class="text-gray-600 text-sm mb-4">15+ years experience in respiratory medicine and asthma treatment</p>
+            <div class="flex items-center justify-center gap-1 text-yellow-400 mb-4">
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <span class="text-gray-600 text-sm ml-1">4.9 (127 reviews)</span>
+            </div>
+            <button class="text-blue-600 text-sm font-medium hover:text-blue-800" data-id="view-profile-1">
+              View Profile →
+            </button>
+          </div>
+
+          <div class="bg-gray-50 rounded-2xl p-6 text-center" data-id="doctor-card-2">
+            <div class="mb-4">
+              <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Dr. Michael Johnson" class="w-20 h-20 rounded-full mx-auto object-cover">
+            </div>
+            <h3 class="text-xl font-semibold text-gray-800 mb-2">Dr. Michael Johnson</h3>
+            <p class="text-blue-600 font-medium mb-3">Respiratory Specialist</p>
+            <p class="text-gray-600 text-sm mb-4">Specialist in COPD, asthma, and respiratory allergies</p>
+            <div class="flex items-center justify-center gap-1 text-yellow-400 mb-4">
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <span class="text-gray-600 text-sm ml-1">4.8 (93 reviews)</span>
+            </div>
+            <button class="text-blue-600 text-sm font-medium hover:text-blue-800" data-id="view-profile-2">
+              View Profile →
+            </button>
+          </div>
+
+          <div class="bg-gray-50 rounded-2xl p-6 text-center" data-id="doctor-card-3">
+            <div class="mb-4">
+              <img src="https://images.unsplash.com/photo-1594824904020-3e62d1677a87?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Dr. Emily Williams" class="w-20 h-20 rounded-full mx-auto object-cover">
+            </div>
+            <h3 class="text-xl font-semibold text-gray-800 mb-2">Dr. Emily Williams</h3>
+            <p class="text-blue-600 font-medium mb-3">Allergy & Asthma Specialist</p>
+            <p class="text-gray-600 text-sm mb-4">Expert in allergy testing and asthma immunotherapy</p>
+            <div class="flex items-center justify-center gap-1 text-yellow-400 mb-4">
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <span class="text-gray-600 text-sm ml-1">5.0 (84 reviews)</span>
+            </div>
+            <button class="text-blue-600 text-sm font-medium hover:text-blue-800" data-id="view-profile-3">
+              View Profile →
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <div id="footer-container" data-source="components/footer.html"></div>
+
+  <!-- Badge -->
+  <div id="badge-container" data-source="components/badge.html"></div>
+
+  <!-- Scripts -->
+  <script type="module">
+    import { loadComponent } from './scripts/components/loader.js';
+    import { AuthManager } from './scripts/auth/auth.js';
+    import { bookAppointment, getAppointments, cancelAppointment } from './scripts/utils/api.js';
+
+    // Initialize components
+    await loadComponent('#navbar-container');
+    await loadComponent('#footer-container');
+    await loadComponent('#badge-container');
+
+    // Initialize auth
+    const auth = new AuthManager();
+    
+    // Initialize icons
+    lucide.createIcons();
+
+    // Check authentication
+    auth.onAuthStateChange((user) => {
+      if (!user) {
+        window.location.href = 'login.html';
+        return;
+      }
+      loadAppointments();
+    });
+
+    // DOM elements
+    const appointmentForm = document.getElementById('appointment-form');
+    const doctorSelect = document.getElementById('doctor-select');
+    const appointmentType = document.getElementById('appointment-type');
+    const appointmentDate = document.getElementById('appointment-date');
+    const appointmentTime = document.getElementById('appointment-time');
+    const visitReason = document.getElementById('visit-reason');
+    const bookBtn = document.getElementById('book-appointment-btn');
+    const bookBtnText = document.getElementById('book-btn-text');
+    const bookSpinner = document.getElementById('book-spinner');
+    const successMessage = document.getElementById('success-message');
+    const errorMessage = document.getElementById('error-message');
+    const errorText = document.getElementById('error-text');
+    const appointmentsContainer = document.getElementById('appointments-container');
+    const emptyAppointments = document.getElementById('empty-appointments');
+    const loadingAppointments = document.getElementById('loading-appointments');
+    const tabUpcoming = document.getElementById('tab-upcoming');
+    const tabPast = document.getElementById('tab-past');
+    const tabAll = document.getElementById('tab-all');
+
+    let allAppointments = [];
+    let currentFilter = 'upcoming';
+
+    // Set minimum date to today
+    const today = new Date().toISOString().split('T')[0];
+    appointmentDate.setAttribute('min', today);
+
+    // Form submission
+    appointmentForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const formData = {
+        doctor: doctorSelect.value,
+        type: appointmentType.value,
+        date: appointmentDate.value,
+        time: appointmentTime.value,
+        reason: visitReason.value,
+        priority: document.querySelector('input[name="priority"]:checked').value
+      };
+
+      setBookingLoading(true);
+      hideMessages();
+
+      try {
+        await bookAppointment(formData);
+        
+        // Success
+        showSuccess();
+        appointmentForm.reset();
+        
+        // Reload appointments
+        await loadAppointments();
+        
+      } catch (error) {
+        console.error('Booking error:', error);
+        showError(error.message || 'Failed to book appointment. Please try again.');
+      } finally {
+        setBookingLoading(false);
+      }
+    });
+
+    function setBookingLoading(loading) {
+      bookBtn.disabled = loading;
+      bookBtnText.classList.toggle('hidden', loading);
+      bookSpinner.classList.toggle('hidden', !loading);
+    }
+
+    function showSuccess() {
+      successMessage.classList.remove('hidden');
+      errorMessage.classList.add('hidden');
+    }
+
+    function showError(message) {
+      errorText.textContent = message;
+      errorMessage.classList.remove('hidden');
+      successMessage.classList.add('hidden');
+    }
+
+    function hideMessages() {
+      successMessage.classList.add('hidden');
+      errorMessage.classList.add('hidden');
+    }
+
+    // Load appointments
+    async function loadAppointments() {
+      showLoadingState();
+      
+      try {
+        const appointments = await getAppointments();
+        allAppointments = appointments;
+        filterAndRenderAppointments();
+      } catch (error) {
+        console.error('Error loading appointments:', error);
+        hideLoadingState();
+        showEmptyState();
+      }
+    }
+
+    function showLoadingState() {
+      loadingAppointments.classList.remove('hidden');
+      emptyAppointments.classList.add('hidden');
+    }
+
+    function hideLoadingState() {
+      loadingAppointments.classList.add('hidden');
+    }
+
+    function showEmptyState() {
+      emptyAppointments.classList.remove('hidden');
+    }
+
+    function hideEmptyState() {
+      emptyAppointments.classList.add('hidden');
+    }
+
+    // Filter appointments
+    function filterAndRenderAppointments() {
+      hideLoadingState();
+      
+      const now = new Date();
+      let filteredAppointments = [];
+
+      switch (currentFilter) {
+        case 'upcoming':
+          filteredAppointments = allAppointments.filter(apt => new Date(apt.date + 'T' + apt.time) > now);
+          break;
+        case 'past':
+          filteredAppointments = allAppointments.filter(apt => new Date(apt.date + 'T' + apt.time) <= now);
+          break;
+        default:
+          filteredAppointments = allAppointments;
+      }
+
+      if (filteredAppointments.length === 0) {
+        showEmptyState();
+        return;
+      }
+
+      hideEmptyState();
+      renderAppointments(filteredAppointments);
+    }
+
+    // Render appointments
+    function renderAppointments(appointments) {
+      appointmentsContainer.innerHTML = appointments.map(appointment => `
+        <div class="border border-gray-200 rounded-xl p-6 hover:shadow-md transition-shadow" data-runtime="true">
+          <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+            <div class="flex-1">
+              <div class="flex items-center gap-3 mb-3">
+                <div class="bg-blue-100 rounded-lg p-2">
+                  <i data-lucide="calendar" class="w-5 h-5 text-blue-600"></i>
+                </div>
+                <div>
+                  <h3 class="font-semibold text-gray-800">${getDoctorName(appointment.doctor)}</h3>
+                  <p class="text-sm text-gray-600">${getAppointmentTypeLabel(appointment.type)}</p>
+                </div>
+              </div>
+              
+              <div class="grid sm:grid-cols-2 gap-4 mb-4">
+                <div class="flex items-center gap-2 text-sm text-gray-600">
+                  <i data-lucide="calendar-days" class="w-4 h-4"></i>
+                  <span>${formatDate(appointment.date)}</span>
+                </div>
+                <div class="flex items-center gap-2 text-sm text-gray-600">
+                  <i data-lucide="clock" class="w-4 h-4"></i>
+                  <span>${formatTime(appointment.time)}</span>
+                </div>
+                <div class="flex items-center gap-2 text-sm text-gray-600">
+                  <i data-lucide="map-pin" class="w-4 h-4"></i>
+                  <span>Medical Center</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${getStatusColor(appointment.status)}">
+                    ${getStatusLabel(appointment.status)}
+                  </span>
+                  <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${getPriorityColor(appointment.priority)}">
+                    ${getPriorityLabel(appointment.priority)}
+                  </span>
+                </div>
+              </div>
+              
+              <div class="bg-gray-50 rounded-lg p-3">
+                <p class="text-sm text-gray-700"><strong>Reason:</strong> ${appointment.reason}</p>
+              </div>
+            </div>
+            
+            <div class="flex items-center gap-2">
+              ${isUpcoming(appointment) ? `
+                <button onclick="rescheduleAppointment('${appointment.id}')" class="text-blue-600 hover:text-blue-800 p-2">
+                  <i data-lucide="calendar-clock" class="w-4 h-4"></i>
+                </button>
+                <button onclick="cancelAppointmentConfirm('${appointment.id}')" class="text-red-600 hover:text-red-800 p-2">
+                  <i data-lucide="x-circle" class="w-4 h-4"></i>
+                </button>
+              ` : `
+                <button onclick="rebookAppointment('${appointment.id}')" class="text-green-600 hover:text-green-800 p-2">
+                  <i data-lucide="repeat" class="w-4 h-4"></i>
+                </button>
+              `}
+            </div>
+          </div>
+        </div>
+      `).join('');
+      
+      lucide.createIcons();
+    }
+
+    // Tab switching
+    [tabUpcoming, tabPast, tabAll].forEach(tab => {
+      tab.addEventListener('click', () => {
+        // Update active tab
+        [tabUpcoming, tabPast, tabAll].forEach(t => {
+          t.classList.remove('bg-white', 'text-blue-600', 'shadow-sm');
+          t.classList.add('text-gray-600');
+        });
+        
+        tab.classList.add('bg-white', 'text-blue-600', 'shadow-sm');
+        tab.classList.remove('text-gray-600');
+        
+        // Update filter
+        currentFilter = tab.id.replace('tab-', '');
+        filterAndRenderAppointments();
+      });
+    });
+
+    // Utility functions
+    function getDoctorName(doctorId) {
+      const doctors = {
+        'dr-smith': 'Dr. Sarah Smith',
+        'dr-johnson': 'Dr. Michael Johnson',
+        'dr-williams': 'Dr. Emily Williams',
+        'dr-brown': 'Dr. David Brown',
+        'dr-davis': 'Dr. Lisa Davis'
+      };
+      return doctors[doctorId] || 'Unknown Doctor';
+    }
+
+    function getAppointmentTypeLabel(type) {
+      const types = {
+        'consultation': 'General Consultation',
+        'follow-up': 'Follow-up Visit',
+        'emergency': 'Emergency Consultation',
+        'routine-checkup': 'Routine Checkup',
+        'test-results': 'Test Results Review',
+        'prescription': 'Prescription Renewal'
+      };
+      return types[type] || type;
+    }
+
+    function getStatusColor(status) {
+      const colors = {
+        'confirmed': 'bg-green-100 text-green-800',
+        'pending': 'bg-yellow-100 text-yellow-800',
+        'cancelled': 'bg-red-100 text-red-800',
+        'completed': 'bg-blue-100 text-blue-800'
+      };
+      return colors[status] || colors.pending;
+    }
+
+    function getStatusLabel(status) {
+      const labels = {
+        'confirmed': 'Confirmed',
+        'pending': 'Pending',
+        'cancelled': 'Cancelled',
+        'completed': 'Completed'
+      };
+      return labels[status] || 'Pending';
+    }
+
+    function getPriorityColor(priority) {
+      const colors = {
+        'routine': 'bg-gray-100 text-gray-800',
+        'urgent': 'bg-orange-100 text-orange-800',
+        'emergency': 'bg-red-100 text-red-800'
+      };
+      return colors[priority] || colors.routine;
+    }
+
+    function getPriorityLabel(priority) {
+      const labels = {
+        'routine': 'Routine',
+        'urgent': 'Urgent',
+        'emergency': 'Emergency'
+      };
+      return labels[priority] || 'Routine';
+    }
+
+    function formatDate(dateString) {
+      return new Date(dateString).toLocaleDateString('en-US', {
+        weekday: 'short',
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric'
+      });
+    }
+
+    function formatTime(timeString) {
+      const [hours, minutes] = timeString.split(':');
+      const hour = parseInt(hours);
+      const ampm = hour >= 12 ? 'PM' : 'AM';
+      const displayHour = hour % 12 || 12;
+      return `${displayHour}:${minutes} ${ampm}`;
+    }
+
+    function isUpcoming(appointment) {
+      const now = new Date();
+      const appointmentDateTime = new Date(appointment.date + 'T' + appointment.time);
+      return appointmentDateTime > now;
+    }
+
+    // Global functions for appointment actions
+    window.rescheduleAppointment = function(id) {
+      alert('Reschedule functionality would open a modal to select new date/time');
+    };
+
+    window.cancelAppointmentConfirm = async function(id) {
+      if (!confirm('Are you sure you want to cancel this appointment?')) return;
+      
+      try {
+        await cancelAppointment(id);
+        await loadAppointments();
+        alert('Appointment cancelled successfully');
+      } catch (error) {
+        console.error('Cancel error:', error);
+        alert('Failed to cancel appointment');
+      }
+    };
+
+    window.rebookAppointment = function(id) {
+      const appointment = allAppointments.find(apt => apt.id === id);
+      if (appointment) {
+        // Pre-fill the form with previous appointment details
+        doctorSelect.value = appointment.doctor;
+        appointmentType.value = appointment.type;
+        visitReason.value = appointment.reason;
+        document.querySelector(`input[name="priority"][value="${appointment.priority}"]`).checked = true;
+      }
+    };
+  </script>
+
+</body></html>

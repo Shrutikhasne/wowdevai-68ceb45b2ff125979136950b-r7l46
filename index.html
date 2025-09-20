@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AsthmaCare - AI-Powered Asthma Management</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://use.typekit.net/yjp3aho.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    body { font-family: "sofia-pro", sans-serif; }
+    .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+    .glass-effect { backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.1); }
+    .floating { animation: floating 3s ease-in-out infinite; }
+    @keyframes floating {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    .fade-in { animation: fadeIn 0.6s ease-in; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body class="bg-gray-50">
+  <!-- Navigation -->
+  <div id="navbar-container" data-source="components/navbar.html"></div>
+
+  <!-- Hero Section -->
+  <section class="gradient-bg text-white pt-20" data-id="hero-section">
+    <div class="container mx-auto px-4 py-16">
+      <div class="flex flex-col lg:flex-row items-center">
+        <div class="lg:w-1/2 mb-10 lg:mb-0 fade-in">
+          <h1 class="text-4xl lg:text-6xl font-bold mb-6 leading-tight" data-id="hero-title">
+            Breathe Easy with AI-Powered Asthma Care
+          </h1>
+          <p class="text-xl mb-8 opacity-90" data-id="hero-subtitle">
+            Monitor air quality, track symptoms, and get personalized recommendations with our intelligent asthma management platform.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <button class="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-all transform hover:scale-105" data-id="get-started-btn">
+              Get Started Free
+            </button>
+            <button class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-all" data-id="learn-more-btn">
+              Learn More
+            </button>
+          </div>
+        </div>
+        <div class="lg:w-1/2 flex justify-center">
+          <div class="floating">
+            <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Healthcare Technology" class="rounded-2xl shadow-2xl max-w-md w-full" data-id="hero-image">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Air Quality Widget -->
+  <section class="py-16 bg-white" data-id="air-quality-section">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-4" data-id="aq-title">
+          Real-Time Air Quality Monitor
+        </h2>
+        <p class="text-xl text-gray-600" data-id="aq-subtitle">
+          Stay informed about air quality in your area
+        </p>
+      </div>
+      
+      <div class="max-w-4xl mx-auto">
+        <div class="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-8 shadow-lg">
+          <div class="flex flex-col lg:flex-row items-center gap-8">
+            <div class="lg:w-1/2">
+              <div class="space-y-4">
+                <div class="flex items-center gap-4">
+                  <i data-lucide="map-pin" class="text-blue-600"></i>
+                  <input type="text" id="location-input" placeholder="Enter your city..." class="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" data-id="location-input">
+                  <button id="check-air-quality" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors" data-id="check-aq-btn">
+                    Check
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="lg:w-1/2">
+              <div id="air-quality-result" class="hidden" data-id="aq-result">
+                <div class="bg-white rounded-xl p-6 shadow-md">
+                  <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-xl font-semibold" data-id="aq-location"></h3>
+                    <span id="aqi-badge" class="px-3 py-1 rounded-full text-white font-medium" data-id="aqi-badge"></span>
+                  </div>
+                  <div class="grid grid-cols-2 gap-4 text-sm">
+                    <div>
+                      <span class="text-gray-600">AQI:</span>
+                      <span id="aqi-value" class="font-semibold ml-2" data-id="aqi-value"></span>
+                    </div>
+                    <div>
+                      <span class="text-gray-600">PM2.5:</span>
+                      <span id="pm25-value" class="font-semibold ml-2" data-id="pm25-value"></span>
+                    </div>
+                    <div>
+                      <span class="text-gray-600">PM10:</span>
+                      <span id="pm10-value" class="font-semibold ml-2" data-id="pm10-value"></span>
+                    </div>
+                    <div>
+                      <span class="text-gray-600">O3:</span>
+                      <span id="o3-value" class="font-semibold ml-2" data-id="o3-value"></span>
+                    </div>
+                  </div>
+                  <p id="health-advice" class="mt-4 text-sm text-gray-700" data-id="health-advice"></p>
+                </div>
+              </div>
+              <div id="loading-spinner" class="hidden text-center py-8" data-id="loading-spinner">
+                <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+                <p class="mt-2 text-gray-600">Checking air quality...</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="py-16 bg-gray-50" data-id="features-section">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-4" data-id="features-title">
+          Complete Asthma Management Solution
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto" data-id="features-subtitle">
+          Everything you need to monitor, manage, and improve your respiratory health in one intelligent platform.
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow" data-id="feature-air-quality">
+          <div class="bg-blue-100 w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
+            <i data-lucide="wind" class="text-blue-600 w-8 h-8"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-4">Air Quality Monitoring</h3>
+          <p class="text-gray-600">Real-time air quality data with personalized alerts and recommendations for your location.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow" data-id="feature-ai-assistant">
+          <div class="bg-purple-100 w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
+            <i data-lucide="brain" class="text-purple-600 w-8 h-8"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-4">AI Health Assistant</h3>
+          <p class="text-gray-600">24/7 intelligent chatbot to answer questions and provide personalized health guidance.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow" data-id="feature-reports">
+          <div class="bg-green-100 w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
+            <i data-lucide="file-text" class="text-green-600 w-8 h-8"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-4">Health Reports</h3>
+          <p class="text-gray-600">Upload and manage your medical documents, prescriptions, and test results securely.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow" data-id="feature-appointments">
+          <div class="bg-orange-100 w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
+            <i data-lucide="calendar" class="text-orange-600 w-8 h-8"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-4">Appointment Booking</h3>
+          <p class="text-gray-600">Schedule appointments with respiratory specialists and manage your healthcare calendar.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow" data-id="feature-tracking">
+          <div class="bg-red-100 w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
+            <i data-lucide="activity" class="text-red-600 w-8 h-8"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-4">Symptom Tracking</h3>
+          <p class="text-gray-600">Track your symptoms, medication usage, and triggers with intelligent analytics.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow" data-id="feature-insights">
+          <div class="bg-indigo-100 w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
+            <i data-lucide="bar-chart-3" class="text-indigo-600 w-8 h-8"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-4">Health Insights</h3>
+          <p class="text-gray-600">Get detailed analytics and trends about your respiratory health over time.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI Chat Section -->
+  <section class="py-16 bg-white" data-id="chat-section">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-4" data-id="chat-title">
+            AI Health Assistant
+          </h2>
+          <p class="text-xl text-gray-600" data-id="chat-subtitle">
+            Ask questions about asthma management, symptoms, or get health advice
+          </p>
+        </div>
+        
+        <div class="bg-gradient-to-r from-purple-50 to-blue-50 rounded-2xl p-8 shadow-lg">
+          <div id="chat-messages" class="h-64 overflow-y-auto mb-6 space-y-4 bg-white rounded-xl p-4" data-id="chat-messages">
+            <div class="flex items-start space-x-3">
+              <div class="bg-blue-600 rounded-full p-2">
+                <i data-lucide="bot" class="text-white w-4 h-4"></i>
+              </div>
+              <div class="bg-gray-100 rounded-2xl px-4 py-3 max-w-md">
+                <p class="text-gray-800">Hello! I'm your AI health assistant. How can I help you with your asthma management today?</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="flex gap-4">
+            <input type="text" id="chat-input" placeholder="Ask about symptoms, medications, or air quality..." class="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" data-id="chat-input">
+            <button id="send-message" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2" data-id="send-btn">
+              <i data-lucide="send" class="w-4 h-4"></i>
+              Send
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 gradient-bg text-white" data-id="cta-section">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl lg:text-4xl font-bold mb-6" data-id="cta-title">
+        Ready to Take Control of Your Asthma?
+      </h2>
+      <p class="text-xl mb-8 opacity-90 max-w-2xl mx-auto" data-id="cta-subtitle">
+        Join thousands of users who are already managing their respiratory health better with AsthmaCare.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="signup.html" class="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-all inline-block" data-id="cta-signup">
+          Start Free Trial
+        </a>
+        <a href="login.html" class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-all inline-block" data-id="cta-login">
+          Sign In
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <div id="footer-container" data-source="components/footer.html"></div>
+
+  <!-- Badge -->
+  <div id="badge-container" data-source="components/badge.html"></div>
+
+  <!-- Scripts -->
+  <script type="module">
+    import { loadComponent } from './scripts/components/loader.js';
+    import { AuthManager } from './scripts/auth/auth.js';
+    import { checkAirQuality, sendChatMessage } from './scripts/utils/api.js';
+
+    // Initialize components
+    await loadComponent('#navbar-container');
+    await loadComponent('#footer-container'); 
+    await loadComponent('#badge-container');
+
+    // Initialize auth
+    const auth = new AuthManager();
+    
+    // Initialize icons
+    lucide.createIcons();
+
+    // Air Quality functionality
+    document.getElementById('check-air-quality').addEventListener('click', async () => {
+      const locationInput = document.getElementById('location-input');
+      const location = locationInput.value.trim();
+      
+      if (!location) {
+        alert('Please enter a location');
+        return;
+      }
+
+      const loadingSpinner = document.getElementById('loading-spinner');
+      const resultDiv = document.getElementById('air-quality-result');
+      
+      loadingSpinner.classList.remove('hidden');
+      resultDiv.classList.add('hidden');
+
+      try {
+        const data = await checkAirQuality(location);
+        
+        if (data && data.current) {
+          // Update UI with air quality data
+          document.getElementById('aq-location').textContent = data.location.name;
+          document.getElementById('aqi-value').textContent = data.current.air_quality.us_epa_index;
+          document.getElementById('pm25-value').textContent = data.current.air_quality.pm2_5.toFixed(1) + ' µg/m³';
+          document.getElementById('pm10-value').textContent = data.current.air_quality.pm10.toFixed(1) + ' µg/m³';
+          document.getElementById('o3-value').textContent = data.current.air_quality.o3.toFixed(1) + ' µg/m³';
+          
+          const aqiBadge = document.getElementById('aqi-badge');
+          const aqi = data.current.air_quality.us_epa_index;
+          
+          let badgeClass = 'bg-green-500';
+          let healthAdvice = 'Air quality is good. Perfect for outdoor activities!';
+          
+          if (aqi <= 1) {
+            badgeClass = 'bg-green-500';
+            healthAdvice = 'Air quality is good. Perfect for outdoor activities!';
+          } else if (aqi <= 2) {
+            badgeClass = 'bg-yellow-500';
+            healthAdvice = 'Air quality is moderate. Sensitive individuals should limit outdoor exposure.';
+          } else if (aqi <= 3) {
+            badgeClass = 'bg-orange-500';
+            healthAdvice = 'Air quality is unhealthy for sensitive groups. Consider staying indoors if you have asthma.';
+          } else {
+            badgeClass = 'bg-red-500';
+            healthAdvice = 'Air quality is unhealthy. Avoid outdoor activities and keep windows closed.';
+          }
+          
+          aqiBadge.className = `px-3 py-1 rounded-full text-white font-medium ${badgeClass}`;
+          aqiBadge.textContent = `AQI ${aqi}`;
+          document.getElementById('health-advice').textContent = healthAdvice;
+          
+          resultDiv.classList.remove('hidden');
+        } else {
+          throw new Error('Unable to fetch air quality data');
+        }
+      } catch (error) {
+        console.error('Error fetching air quality:', error);
+        alert('Error fetching air quality data. Please try again.');
+      } finally {
+        loadingSpinner.classList.add('hidden');
+      }
+    });
+
+    // Chat functionality
+    const chatMessages = document.getElementById('chat-messages');
+    const chatInput = document.getElementById('chat-input');
+    const sendButton = document.getElementById('send-message');
+
+    async function handleSendMessage() {
+      const message = chatInput.value.trim();
+      if (!message) return;
+
+      // Add user message
+      addMessage(message, 'user');
+      chatInput.value = '';
+
+      // Add loading message
+      const loadingId = addMessage('Thinking...', 'bot', true);
+
+      try {
+        const response = await sendChatMessage(message);
+        
+        // Remove loading message
+        const loadingMsg = document.getElementById(loadingId);
+        if (loadingMsg) loadingMsg.remove();
+        
+        // Add bot response
+        addMessage(response, 'bot');
+      } catch (error) {
+        // Remove loading message
+        const loadingMsg = document.getElementById(loadingId);
+        if (loadingMsg) loadingMsg.remove();
+        
+        addMessage('Sorry, I encountered an error. Please try again.', 'bot');
+      }
+    }
+
+    function addMessage(text, sender, isLoading = false) {
+      const messageId = 'msg-' + Date.now();
+      const messageDiv = document.createElement('div');
+      messageDiv.id = messageId;
+      messageDiv.className = 'flex items-start space-x-3';
+      messageDiv.setAttribute('data-runtime', 'true');
+      
+      if (sender === 'user') {
+        messageDiv.innerHTML = `
+          <div class="bg-blue-600 text-white rounded-2xl px-4 py-3 max-w-md ml-auto">
+            <p>${text}</p>
+          </div>
+          <div class="bg-blue-600 rounded-full p-2">
+            <i data-lucide="user" class="text-white w-4 h-4"></i>
+          </div>
+        `;
+        messageDiv.classList.add('flex-row-reverse');
+      } else {
+        messageDiv.innerHTML = `
+          <div class="bg-blue-600 rounded-full p-2">
+            <i data-lucide="bot" class="text-white w-4 h-4"></i>
+          </div>
+          <div class="bg-gray-100 rounded-2xl px-4 py-3 max-w-md ${isLoading ? 'animate-pulse' : ''}">
+            <p class="text-gray-800">${text}</p>
+          </div>
+        `;
+      }
+      
+      chatMessages.appendChild(messageDiv);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+      lucide.createIcons();
+      
+      return messageId;
+    }
+
+    sendButton.addEventListener('click', handleSendMessage);
+    chatInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') handleSendMessage();
+    });
+
+    // Smooth scrolling for navigation links
+    document.addEventListener('click', (e) => {
+      if (e.target.matches('[href^="#"]')) {
+        e.preventDefault();
+        const target = document.querySelector(e.target.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    });
+  </script>
+</body>
+</html>

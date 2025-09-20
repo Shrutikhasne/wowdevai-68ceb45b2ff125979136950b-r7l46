@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up - AsthmaCare</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://use.typekit.net/yjp3aho.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    body { font-family: "sofia-pro", sans-serif; }
+    .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+    .glass-effect { backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.1); }
+  </style>
+</head>
+<body class="gradient-bg min-h-screen flex items-center justify-center p-4">
+  
+  <!-- Supabase Connection Status -->
+  <div id="connection-status" class="fixed top-4 right-4 z-50 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg" data-id="connection-status">
+    <div class="flex items-center gap-2">
+      <i data-lucide="check-circle" class="w-4 h-4"></i>
+      <span>Connected to Supabase</span>
+    </div>
+  </div>
+
+  <!-- Sign Up Card -->
+  <div class="w-full max-w-md" data-id="signup-container">
+    <div class="bg-white rounded-2xl shadow-2xloverflow-hidden">
+      <!-- Header -->
+      <div class="gradient-bg text-white p-8 text-center" data-id="signup-header">
+        <div class="mb-4">
+          <div class="bg-white/20 rounded-2xl p-4 inline-block">
+            <i data-lucide="user-plus" class="w-8 h-8"></i>
+          </div>
+        </div>
+        <h1 class="text-2xl font-bold mb-2">Create Account</h1>
+        <p class="opacity-90">Join AsthmaCare for better health management</p>
+      </div>
+
+      <!-- Sign Up Form -->
+      <div class="p-8" data-id="signup-form-container">
+        <form id="signup-form" class="space-y-6" data-id="signup-form">
+          <!-- Full Name Field -->
+          <div>
+            <label for="full-name" class="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <i data-lucide="user" class="w-5 h-5 text-gray-400"></i>
+              </div>
+              <input type="text" id="full-name" name="fullName" required
+                class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                placeholder="Enter your full name" data-id="fullname-input">
+            </div>
+          </div>
+
+          <!-- Email Field -->
+          <div>
+            <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <i data-lucide="mail" class="w-5 h-5 text-gray-400"></i>
+              </div>
+              <input type="email" id="email" name="email" required
+                class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                placeholder="Enter your email" data-id="email-input">
+            </div>
+          </div>
+
+          <!-- Password Field -->
+          <div>
+            <label for="password" class="block text-sm font-medium text-gray-700 mb-2">Password</label>
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <i data-lucide="lock" class="w-5 h-5 text-gray-400"></i>
+              </div>
+              <input type="password" id="password" name="password" required
+                class="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                placeholder="Create a strong password" data-id="password-input">
+              <button type="button" id="toggle-password" class="absolute inset-y-0 right-0 pr-3 flex items-center" data-id="toggle-password">
+                <i data-lucide="eye" class="w-5 h-5 text-gray-400 hover:text-gray-600"></i>
+              </button>
+            </div>
+            <div id="password-strength" class="mt-2 text-sm" data-id="password-strength">
+              <div class="flex items-center gap-2">
+                <div class="flex-1 bg-gray-200 rounded-full h-2">
+                  <div id="strength-bar" class="h-2 rounded-full transition-all duration-300 w-0"></div>
+                </div>
+                <span id="strength-text" class="text-gray-500 min-w-16">Weak</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Confirm Password Field -->
+          <div>
+            <label for="confirm-password" class="block text-sm font-medium text-gray-700 mb-2">Confirm Password</label>
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <i data-lucide="lock" class="w-5 h-5 text-gray-400"></i>
+              </div>
+              <input type="password" id="confirm-password" name="confirmPassword" required
+                class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                placeholder="Confirm your password" data-id="confirm-password-input">
+            </div>
+          </div>
+
+          <!-- Age Field -->
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label for="age" class="block text-sm font-medium text-gray-700 mb-2">Age</label>
+              <select id="age" name="age" required
+                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                data-id="age-select">
+                <option value="">Select age</option>
+                <option value="under-18">Under 18</option>
+                <option value="18-25">18-25</option>
+                <option value="26-35">26-35</option>
+                <option value="36-45">36-45</option>
+                <option value="46-55">46-55</option>
+                <option value="56-65">56-65</option>
+                <option value="over-65">Over 65</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="gender" class="block text-sm font-medium text-gray-700 mb-2">Gender</label>
+              <select id="gender" name="gender" required
+                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                data-id="gender-select">
+                <option value="">Select gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+                <option value="prefer-not-to-say">Prefer not to say</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Asthma Severity -->
+          <div>
+            <label for="asthma-severity" class="block text-sm font-medium text-gray-700 mb-2">Asthma Severity</label>
+            <select id="asthma-severity" name="asthmaSeverity" required
+              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+              data-id="asthma-severity-select">
+              <option value="">Select severity level</option>
+              <option value="mild-intermittent">Mild Intermittent</option>
+              <option value="mild-persistent">Mild Persistent</option>
+              <option value="moderate-persistent">Moderate Persistent</option>
+              <option value="severe-persistent">Severe Persistent</option>
+              <option value="no-asthma">I don't have asthma</option>
+            </select>
+          </div>
+
+          <!-- Terms and Conditions -->
+          <div class="flex items-start">
+            <div class="flex items-center h-5">
+              <input id="terms" name="terms" type="checkbox" required
+                class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded" data-id="terms-checkbox">
+            </div>
+            <div class="ml-3 text-sm">
+              <label for="terms" class="font-medium text-gray-700">
+                I agree to the
+                <a href="#" class="text-blue-600 hover:text-blue-500">Terms of Service</a>
+                and
+                <a href="#" class="text-blue-600 hover:text-blue-500">Privacy Policy</a>
+              </label>
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" id="signup-btn"
+            class="w-full bg-blue-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            data-id="signup-submit-btn">
+            <span id="signup-btn-text">Create Account</span>
+            <div id="signup-spinner" class="hidden">
+              <i data-lucide="loader-2" class="w-5 h-5 animate-spin mx-auto"></i>
+            </div>
+          </button>
+
+          <!-- Error Message -->
+          <div id="error-message" class="hidden bg-red-50 border border-red-200 rounded-lg p-4" data-id="error-message">
+            <div class="flex">
+              <i data-lucide="alert-circle" class="w-5 h-5 text-red-400"></i>
+              <div class="ml-3">
+                <h3 class="text-sm font-medium text-red-800">Registration Error</h3>
+                <p id="error-text" class="text-sm text-red-700 mt-1"></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Success Message -->
+          <div id="success-message" class="hidden bg-green-50 border border-green-200 rounded-lg p-4" data-id="success-message">
+            <div class="flex">
+              <i data-lucide="check-circle" class="w-5 h-5 text-green-400"></i>
+              <div class="ml-3">
+                <h3 class="text-sm font-medium text-green-800">Account Created Successfully!</h3>
+                <p class="text-sm text-green-700 mt-1">Please check your email to verify your account.</p>
+              </div>
+            </div>
+          </div>
+        </form>
+
+        <!-- Divider -->
+        <div class="mt-8">
+          <div class="relative">
+            <div class="absolute inset-0 flex items-center">
+              <div class="w-full border-t border-gray-300"></div>
+            </div>
+            <div class="relative flex justify-center text-sm">
+              <span class="px-2 bg-white text-gray-500">Or sign up with</span>
+            </div>
+          </div>
+
+          <!-- Social Sign Up -->
+          <div class="mt-6 grid grid-cols-2 gap-3">
+            <button type="button" id="google-signup"
+              class="w-full inline-flex justify-center py-3 px-4 border border-gray-300 rounded-lg shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 transition-colors"
+              data-id="google-signup-btn">
+              <svg class="w-5 h-5" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                <path fill="currentColor" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                <path fill="currentColor" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                <path fill="currentColor" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+              </svg>
+              <span class="ml-2">Google</span>
+            </button>
+
+            <button type="button" id="github-signup"
+              class="w-full inline-flex justify-center py-3 px-4 border border-gray-300 rounded-lg shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 transition-colors"
+              data-id="github-signup-btn">
+              <i data-lucide="github" class="w-5 h-5"></i>
+              <span class="ml-2">GitHub</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Sign In Link -->
+        <div class="mt-8 text-center">
+          <p class="text-sm text-gray-600">Already have an account?
+            <a href="login.html" class="font-medium text-blue-600 hover:text-blue-500" data-id="login-link">
+              Sign in here
+            </a>
+          </p>
+        </div>
+
+        <!-- Back to Home -->
+        <div class="mt-4 text-center">
+          <a href="index.html" class="text-sm text-gray-500 hover:text-gray-700 flex items-center justify-center gap-2" data-id="back-home-link">
+            <i data-lucide="arrow-left" class="w-4 h-4"></i>
+            Back to AsthmaCare
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Badge -->
+  <div id="badge-container" data-source="components/badge.html"></div>
+
+  <!-- Scripts -->
+  <script type="module">
+    import { loadComponent } from './scripts/components/loader.js';
+    import { AuthManager } from './scripts/auth/auth.js';
+
+    // Load components
+    await loadComponent('#badge-container');
+    
+    // Initialize auth
+    const auth = new AuthManager();
+    
+    // Initialize icons
+    lucide.createIcons();
+
+    // Check if already logged in
+    auth.onAuthStateChange((user) => {
+      if (user) {
+        window.location.href = 'index.html';
+      }
+    });
+
+    // DOM elements
+    const signupForm = document.getElementById('signup-form');
+    const fullNameInput = document.getElementById('full-name');
+    const emailInput = document.getElementById('email');
+    const passwordInput = document.getElementById('password');
+    const confirmPasswordInput = document.getElementById('confirm-password');
+    const ageSelect = document.getElementById('age');
+    const genderSelect = document.getElementById('gender');
+    const asthmaSeveritySelect = document.getElementById('asthma-severity');
+    const termsCheckbox = document.getElementById('terms');
+    const signupBtn = document.getElementById('signup-btn');
+    const signupBtnText = document.getElementById('signup-btn-text');
+    const signupSpinner = document.getElementById('signup-spinner');
+    const errorMessage = document.getElementById('error-message');
+    const errorText = document.getElementById('error-text');
+    const successMessage = document.getElementById('success-message');
+    const togglePasswordBtn = document.getElementById('toggle-password');
+    const googleSignupBtn = document.getElementById('google-signup');
+    const githubSignupBtn = document.getElementById('github-signup');
+    const strengthBar = document.getElementById('strength-bar');
+    const strengthText = document.getElementById('strength-text');
+
+    // Password strength checker
+    passwordInput.addEventListener('input', () => {
+      const password = passwordInput.value;
+      const strength = calculatePasswordStrength(password);
+      updatePasswordStrength(strength);
+    });
+
+    function calculatePasswordStrength(password) {
+      let score = 0;
+      if (password.length >= 8) score += 1;
+      if (password.length >= 12) score += 1;
+      if (/[a-z]/.test(password)) score += 1;
+      if (/[A-Z]/.test(password)) score += 1;
+      if (/[0-9]/.test(password)) score += 1;
+      if (/[^a-zA-Z0-9]/.test(password)) score += 1;
+      return Math.min(score, 4);
+    }
+
+    function updatePasswordStrength(strength) {
+      const colors = ['bg-red-500', 'bg-orange-500', 'bg-yellow-500', 'bg-green-500'];
+      const texts = ['Weak', 'Fair', 'Good', 'Strong'];
+      const widths = ['25%', '50%', '75%', '100%'];
+
+      strengthBar.className = `h-2 rounded-full transition-all duration-300 ${colors[strength] || 'bg-gray-300'}`;
+      strengthBar.style.width = widths[strength] || '0%';
+      strengthText.textContent = texts[strength] || 'Weak';
+      strengthText.className = `min-w-16 ${strength >= 2 ? 'text-green-600' : strength >= 1 ? 'text-yellow-600' : 'text-red-600'}`;
+    }
+
+    // Toggle password visibility
+    togglePasswordBtn.addEventListener('click', () => {
+      const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+      passwordInput.setAttribute('type', type);
+      confirmPasswordInput.setAttribute('type', type);
+      
+      const icon = togglePasswordBtn.querySelector('i');
+      if (type === 'password') {
+        icon.setAttribute('data-lucide', 'eye');
+      } else {
+        icon.setAttribute('data-lucide', 'eye-off');
+      }
+      lucide.createIcons();
+    });
+
+    // Form validation
+    function validateForm() {
+      const fullName = fullNameInput.value.trim();
+      const email = emailInput.value.trim();
+      const password = passwordInput.value;
+      const confirmPassword = confirmPasswordInput.value;
+      const age = ageSelect.value;
+      const gender = genderSelect.value;
+      const asthmaSeverity = asthmaSeveritySelect.value;
+      const terms = termsCheckbox.checked;
+
+      if (!fullName) throw new Error('Full name is required');
+      if (!email) throw new Error('Email is required');
+      if (!password) throw new Error('Password is required');
+      if (password !== confirmPassword) throw new Error('Passwords do not match');
+      if (password.length < 8) throw new Error('Password must be at least 8 characters');
+      if (!age) throw new Error('Age is required');
+      if (!gender) throw new Error('Gender is required');
+      if (!asthmaSeverity) throw new Error('Asthma severity is required');
+      if (!terms) throw new Error('You must agree to the terms and conditions');
+
+      return { fullName, email, password, age, gender, asthmaSeverity };
+    }
+
+    // Handle form submission
+    signupForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      try {
+        const formData = validateForm();
+        setLoading(true);
+        hideMessages();
+
+        const result = await auth.signUp(formData.email, formData.password, {
+          full_name: formData.fullName,
+          age_group: formData.age,
+          gender: formData.gender,
+          asthma_severity: formData.asthmaSeverity
+        });
+        
+        if (result.error) {
+          throw new Error(result.error.message);
+        }
+
+        // Success
+        showSuccess();
+        signupForm.reset();
+        
+      } catch (error) {
+        console.error('Signup error:', error);
+        showError(error.message);
+      } finally {
+        setLoading(false);
+      }
+    });
+
+    // Google signup
+    googleSignupBtn.addEventListener('click', async () => {
+      try {
+        setLoading(true, 'google');
+        const result = await auth.signInWithGoogle();
+        
+        if (result.error) {
+          throw new Error(result.error.message);
+        }
+        
+        // Success - redirect will happen via auth state change
+      } catch (error) {
+        console.error('Google signup error:', error);
+        showError(error.message || 'Google signup failed');
+        setLoading(false, 'google');
+      }
+    });
+
+    // GitHub signup
+    githubSignupBtn.addEventListener('click', async () => {
+      try {
+        setLoading(true, 'github');
+        const result = await auth.signInWithGitHub();
+        
+        if (result.error) {
+          throw new Error(result.error.message);
+        }
+        
+        // Success - redirect will happen via auth state change
+      } catch (error) {
+        console.error('GitHub signup error:', error);
+        showError(error.message || 'GitHub signup failed');
+        setLoading(false, 'github');
+      }
+    });
+
+    // Helper functions
+    function setLoading(loading, provider = 'email') {
+      if (provider === 'email') {
+        signupBtn.disabled = loading;
+        signupBtnText.classList.toggle('hidden', loading);
+        signupSpinner.classList.toggle('hidden', !loading);
+      } else if (provider === 'google') {
+        googleSignupBtn.disabled = loading;
+      } else if (provider === 'github') {
+        githubSignupBtn.disabled = loading;
+      }
+    }
+
+    function showError(message) {
+      errorText.textContent = message;
+      errorMessage.classList.remove('hidden');
+      successMessage.classList.add('hidden');
+    }
+
+    function showSuccess() {
+      successMessage.classList.remove('hidden');
+      errorMessage.classList.add('hidden');
+    }
+
+    function hideMessages() {
+      errorMessage.classList.add('hidden');
+      successMessage.classList.add('hidden');
+    }
+
+    // Auto-focus first input
+    fullNameInput.focus();
+  </script>
+</body>
+</html>
